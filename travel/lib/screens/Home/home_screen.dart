@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 
+import '../../model/place_model.dart';
+import '../detailscreen/detail_screen.dart';
+import 'widgets/category_card.dart';
+import 'widgets/recommended_card.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -12,12 +17,24 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFFE5E5E5),
+      bottomNavigationBar: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 15),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: const [
+              Icon(Icons.home, size: 40,),
+              Icon(Icons.favorite,  size: 40,),
+            ],
+          ),
+        ),
+      ),
       body: SafeArea(
         child: Center(
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-            child: Column(
-              children: [
+            child: SingleChildScrollView(
+              child: Column(children: [
                 // App bar
                 Row(
                   children: [
@@ -75,8 +92,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 5, horizontal: 10),
+                      padding:
+                          const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
                       child: Row(
                         children: [
                           Expanded(
@@ -87,22 +104,23 @@ class _HomeScreenState extends State<HomeScreen> {
                                 fillColor: Colors.white,
                                 filled: true,
                                 border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10),
+                                  borderRadius: BorderRadius.circular(100),
                                   borderSide: BorderSide.none,
                                 ),
                               ),
                             ),
                           ),
                           const CircleAvatar(
-                            radius: 27,
+                            radius: 20,
                             backgroundColor: Colors.white,
-                            child: Icon(Icons.sort_by_alpha_sharp),
+                            child: Icon(Icons.filter_list),
                           ),
                         ],
                       ),
                     ),
                   ),
                 ),
+              
                 // Category
                 const SizedBox(
                   height: 20,
@@ -119,10 +137,10 @@ class _HomeScreenState extends State<HomeScreen> {
                   ],
                 ),
                 const SizedBox(
-                  height: 20,
+                  height: 15,
                 ),
-                SizedBox(
-                  height: 50,
+                Container(
+                  height: 70,
                   child: ListView(
                     scrollDirection: Axis.horizontal,
                     children: [
@@ -143,64 +161,59 @@ class _HomeScreenState extends State<HomeScreen> {
                             image: "assets/images/forest.jpg",
                             title: "Forest",
                           ),
+                          CategoryCard(
+                            press: () {},
+                            image: "assets/images/monument.jpeg",
+                            title: "Monuments",
+                          ),
+                          CategoryCard(
+                            press: () {},
+                            image: "assets/images/desert.png",
+                            title: "Deserts",
+                          ),
                         ],
                       ),
                     ],
                   ),
                 ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class CategoryCard extends StatelessWidget {
-  final String title, image;
-  final VoidCallback press;
-  const CategoryCard({
-    super.key,
-    required this.title,
-    required this.image,
-    required this.press,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(right: 10),
-      child: InkWell(
-        onTap: press,
-        child: Material(
-          elevation: 5,
-          borderRadius: BorderRadius.circular(100),
-          child: Container(
-            height: 50,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(100),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 8.0),
-              child: Row(
-                children: [
-                  CircleAvatar(
-                    backgroundImage: AssetImage(image),
-                  ),
-                  const SizedBox(
-                    width: 5,
-                  ),
-                  Text(
-                    title,
-                    style: const TextStyle(
-                        fontSize: 20,
-                        color: Colors.black,
-                        fontWeight: FontWeight.w500),
-                  ),
-                ],
-              ),
+              
+                // Recommended
+                const SizedBox(
+                  height: 10,
+                ),
+                Row(
+                  children: const [
+                    Text(
+                      "Recommended",
+                      style: TextStyle(
+                          fontSize: 40,
+                          color: Colors.black,
+                          fontWeight: FontWeight.w500),
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 15,
+                ),
+                Container(
+                    height: 300,
+                    child: ListView.builder(
+                      itemCount: places.length,
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) {
+                      return Padding(
+                        padding: const EdgeInsets.only(left:5, right: 15),
+                        child: Row(
+                          children: [
+                            RecomendedCard(placeInfo: places[index], 
+                            press: () { 
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => DetailScreen(placeInfo: places[index],),),);
+                             },),
+                          ],
+                        ),
+                      );
+                    })),
+              ]),
             ),
           ),
         ),
