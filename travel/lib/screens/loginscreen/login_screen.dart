@@ -1,15 +1,12 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:travel/screens/Home/home_screen.dart';
-import 'package:travel/screens/loginscreen/login_screen.dart';
+import 'package:travel/screens/welcome/welcome_screen.dart';
 
-class WelcomeScreen extends StatefulWidget {
-  const WelcomeScreen({super.key});
+class LoginScreen extends StatelessWidget {
+  const LoginScreen({super.key});
 
-  @override
-  State<WelcomeScreen> createState() => _WelcomeScreenState();
-}
-
-class _WelcomeScreenState extends State<WelcomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,30 +23,13 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               ]),
             ),
             child: Padding(
-              padding: const EdgeInsets.only(
-                top: 100,
-                left: 40,
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "Welcome to\n ተጓዥ!",
-                    style: TextStyle(
-                        fontSize: 40,
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold),
-                  ),
-                  SizedBox(height: 20),
-                  Text(
-                    "Design your own trip and enjoy your vacation",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                    ),
-                  )
-                ],
+              padding: const EdgeInsets.only(top: 100, left: 40),
+              child: Text(
+                "Hello \n Sign in to ተጓዥ!",
+                style: TextStyle(
+                    fontSize: 40,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold),
               ),
             ),
           ),
@@ -76,18 +56,6 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                       children: [
                         TextField(
                           decoration: InputDecoration(
-                            suffixIcon: Icon(Icons.check, color: Colors.grey),
-                            label: Text(
-                              "Name",
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(255, 106, 191, 36),
-                              ),
-                            ),
-                          ),
-                        ),
-                        TextField(
-                          decoration: InputDecoration(
                             suffixIcon: Icon(Icons.email, color: Colors.grey),
                             label: Text(
                               "Email",
@@ -104,19 +72,6 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                                 Icon(Icons.visibility_off, color: Colors.grey),
                             label: Text(
                               "Password",
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(255, 106, 191, 36),
-                              ),
-                            ),
-                          ),
-                        ),
-                        TextField(
-                          decoration: InputDecoration(
-                            suffixIcon:
-                                Icon(Icons.visibility_off, color: Colors.grey),
-                            label: Text(
-                              "Confirm Password",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: Color.fromARGB(255, 106, 191, 36),
@@ -145,7 +100,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => const LoginScreen()));
+                                    builder: (context) => const HomeScreen()));
                           },
                           child: Container(
                             width: 300,
@@ -182,7 +137,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           Text(
-                            "Already have an account?",
+                            "Don't have an account?",
                             style: TextStyle(
                               color: Colors.grey,
                               fontSize: 18,
@@ -195,7 +150,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) =>
-                                            const LoginScreen()));
+                                            const WelcomeScreen()));
                               },
                               child: Text(
                                 "Sign Up",

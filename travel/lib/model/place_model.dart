@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 
 class PlaceInfo {
   final String name, location, description, image;
