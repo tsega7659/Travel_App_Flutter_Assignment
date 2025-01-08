@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:travel/screens/Home/home_screen.dart';
 import 'package:travel/screens/loginscreen/login_screen.dart';
 
 class WelcomeScreen extends StatefulWidget {
