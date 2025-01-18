@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:travel/screens/favoritescreen/favorite_Screen.dart';
+import 'package:travel/model/favorite_item.dart'; // Import the FavoriteItem class
 
 import '../../model/place_model.dart';
 
@@ -11,8 +13,22 @@ class DetailScreen extends StatefulWidget {
 }
 
 class _DetailScreenState extends State<DetailScreen> {
+  List<FavoriteItem> favorites = [];
+  bool isFavorite = false;
+
+  void addToFavorites(FavoriteItem item) {
+    setState(() {
+      favorites.add(item);
+      isFavorite = true;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+    FavoriteItem currentItem = FavoriteItem(
+      title: widget.placeInfo.name, // Use the actual item title
+      imagePath: widget.placeInfo.image, // Use the actual item image path
+    );
     return Scaffold(
       backgroundColor: Color(0xFFE5E5E5),
       bottomNavigationBar: SafeArea(
@@ -22,14 +38,30 @@ class _DetailScreenState extends State<DetailScreen> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               IconButton(
-                icon: Icon(Icons.home, size: 40),
+                icon: Icon(
+                  Icons.home,
+                  size: 40,
+                  color: Color.fromARGB(255, 76, 185, 3),
+                ),
                 onPressed: () {
                   Navigator.pop(context);
                 },
               ),
-              Icon(
-                Icons.favorite,
-                size: 40,
+              IconButton(
+                icon: Icon(
+                  Icons.favorite,
+                  size: 40,
+                  color: Color.fromARGB(255, 76, 185, 3),
+                ),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>
+                          FavoriteScreen(favorites: favorites),
+                    ),
+                  );
+                },
               ),
             ],
           ),
@@ -74,28 +106,6 @@ class _DetailScreenState extends State<DetailScreen> {
                                   color: Colors.black,
                                   size: 16,
                                 ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Material(
-                        elevation: 5,
-                        borderRadius: BorderRadius.circular(100),
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Container(
-                            height: 30,
-                            width: 30,
-                            decoration: BoxDecoration(
-                              color: Colors.black,
-                              shape: BoxShape.circle,
-                            ),
-                            child: Center(
-                              child: Icon(
-                                Icons.bookmark_rounded,
-                                color: Colors.white,
-                                size: 25,
                               ),
                             ),
                           ),
@@ -228,9 +238,13 @@ class _DetailScreenState extends State<DetailScreen> {
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(100),
                               ),
-                              onPressed: () {},
+                              onPressed: () {
+                                addToFavorites(currentItem);
+                              },
                               child: Text(
-                                "Add to Favorite",
+                                isFavorite
+                                    ? "This is your Favorite Place"
+                                    : "Add to Your Favorite Places",
                                 style: const TextStyle(
                                   fontSize: 20,
                                   color: Colors.white,
