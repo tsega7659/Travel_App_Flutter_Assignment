@@ -25,10 +25,12 @@ class _HomeScreenState extends State<HomeScreen> {
             children: const [
               Icon(
                 Icons.home,
+                color: Color.fromARGB(255, 76, 185, 3),
                 size: 40,
               ),
               Icon(
                 Icons.favorite,
+                color: Color.fromARGB(255, 76, 185, 3),
                 size: 40,
               ),
             ],
@@ -98,7 +100,6 @@ class _HomeScreenState extends State<HomeScreen> {
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(10),
-                        
                       ),
                       child: Padding(
                         padding: const EdgeInsets.symmetric(
@@ -109,6 +110,9 @@ class _HomeScreenState extends State<HomeScreen> {
                               child: TextFormField(
                                 decoration: InputDecoration(
                                   hintText: "Search for destinations",
+                                  hintStyle: TextStyle(
+                                    color: Color.fromARGB(255, 76, 185, 3),
+                                  ),
                                   prefixIcon: const Icon(Icons.search),
                                   fillColor: Colors.white,
                                   filled: true,
@@ -140,7 +144,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         "Category",
                         style: TextStyle(
                             fontSize: 40,
-                            color: Colors.black,
+                            color: Color.fromARGB(255, 39, 79, 12),
                             fontWeight: FontWeight.w500),
                       ),
                     ],
@@ -196,7 +200,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         "Recommended",
                         style: TextStyle(
                             fontSize: 40,
-                            color: Colors.black,
+                            color: Color.fromARGB(255, 39, 79, 12),
                             fontWeight: FontWeight.w500),
                       ),
                     ],

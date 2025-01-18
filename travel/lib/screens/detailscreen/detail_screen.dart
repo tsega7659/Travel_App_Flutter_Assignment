@@ -15,7 +15,7 @@ class _DetailScreenState extends State<DetailScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFFE5E5E5),
-       bottomNavigationBar: SafeArea(
+      bottomNavigationBar: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
           child: Row(
@@ -27,19 +27,24 @@ class _DetailScreenState extends State<DetailScreen> {
                   Navigator.pop(context);
                 },
               ),
-              Icon(Icons.favorite,  size: 40,),
+              Icon(
+                Icons.favorite,
+                size: 40,
+              ),
             ],
           ),
         ),
       ),
       body: Stack(
         children: [
-          Image.asset(widget.placeInfo.image,
-           height: MediaQuery.of(context).size.height * 0.5, 
-           width: double.infinity, 
-           fit: BoxFit.cover,),
-           SafeArea(
-             child: Column(
+          Image.asset(
+            widget.placeInfo.image,
+            height: MediaQuery.of(context).size.height * 0.5,
+            width: double.infinity,
+            fit: BoxFit.cover,
+          ),
+          SafeArea(
+            child: Column(
               children: [
                 // App bar
                 Padding(
@@ -74,7 +79,7 @@ class _DetailScreenState extends State<DetailScreen> {
                           ),
                         ),
                       ),
-                       Material(
+                      Material(
                         elevation: 5,
                         borderRadius: BorderRadius.circular(100),
                         child: Padding(
@@ -99,44 +104,52 @@ class _DetailScreenState extends State<DetailScreen> {
                     ],
                   ),
                 ),
+
                 ///
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.3,
                 ),
                 Container(
-                  
                   width: double.infinity,
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(30),
                   ),
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 20, vertical: 20),
                     child: SingleChildScrollView(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
                             widget.placeInfo.name,
-                             style: const TextStyle(
-                            fontSize: 30,
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                          ),),
+                            style: const TextStyle(
+                              fontSize: 30,
+                              color: Color.fromARGB(255, 39, 79, 12),
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
                           const SizedBox(
                             height: 10,
                           ),
                           Row(
                             children: [
-                              const Icon(Icons.location_on),
+                              const Icon(
+                                Icons.location_on,
+                                color: Color.fromARGB(255, 39, 79, 12),
+                              ),
                               const SizedBox(
                                 width: 12,
                               ),
-                              Text(widget.placeInfo.location, style: const TextStyle(
-                                fontSize: 20,
-                                color: Colors.grey,
-                                fontWeight: FontWeight.w500,
-                              ),),
+                              Text(
+                                widget.placeInfo.location,
+                                style: const TextStyle(
+                                  fontSize: 20,
+                                  color: Color.fromARGB(255, 134, 196, 94),
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
                             ],
                           ),
                           const SizedBox(
@@ -144,53 +157,55 @@ class _DetailScreenState extends State<DetailScreen> {
                           ),
                           Text(
                             "Trip details",
-                             style: const TextStyle(
-                            fontSize: 25,
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                          ),),
+                            style: const TextStyle(
+                              fontSize: 25,
+                              color: Color.fromARGB(255, 99, 167, 54),
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
                           const SizedBox(
                             height: 10,
                           ),
-                           Text(
-                             widget.placeInfo.description,
-                              style: const TextStyle(
-                                  fontSize: 18,
-                                  color: Colors.grey,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                           ),
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              Divider(
-                                height: 5,
-                                color: Colors.black,
-                              ),
-                              const SizedBox(
-                                height: 10,
-                                ),
-                               Row(
+                          Text(
+                            widget.placeInfo.description,
+                            style: const TextStyle(
+                              fontSize: 18,
+                              color: Colors.grey,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Divider(
+                            height: 5,
+                            color: Colors.black,
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Row(
                             children: [
                               Text(
-                                "Distance: ", 
-                              style: const TextStyle(
-                                fontSize: 20,
-                                color: Colors.grey,
-                                fontWeight: FontWeight.w500,
-                              ),
+                                "Distance: ",
+                                style: const TextStyle(
+                                  fontSize: 20,
+                                  color: Color.fromARGB(255, 134, 196, 94),
+                                  fontWeight: FontWeight.w500,
+                                ),
                               ),
                               const SizedBox(
                                 width: 12,
                               ),
                               Expanded(
                                 child: Text(
-                                  widget.placeInfo.distance.toString() + " km away from the capital.", 
-                                style: const TextStyle(
-                                  fontSize: 20,
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold,
-                                ),
+                                  widget.placeInfo.distance.toString() +
+                                      " km away from the capital.",
+                                  style: const TextStyle(
+                                    fontSize: 20,
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
                               ),
                             ],
@@ -198,30 +213,40 @@ class _DetailScreenState extends State<DetailScreen> {
                           const SizedBox(
                             height: 50,
                           ),
-                          MaterialButton(
-                            color: Colors.black,
-                            minWidth: double.infinity,
-                            height: 50,
-                            shape: RoundedRectangleBorder(
+                          Container(
+                            decoration: BoxDecoration(
+                              gradient: LinearGradient(colors: [
+                                Color.fromARGB(255, 135, 201, 92),
+                                Color.fromARGB(255, 100, 168, 56),
+                                Color.fromARGB(255, 11, 126, 49),
+                              ]),
                               borderRadius: BorderRadius.circular(100),
                             ),
-                            onPressed: (){},
-                          child: Text(
-                            "Add to Favorite", 
-                          style: const TextStyle(
-                            fontSize: 20,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
+                            child: MaterialButton(
+                              minWidth: double.infinity,
+                              height: 50,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(100),
+                              ),
+                              onPressed: () {},
+                              child: Text(
+                                "Add to Favorite",
+                                style: const TextStyle(
+                                  fontSize: 20,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
                           ),
-                          ),),  
                         ],
                       ),
                     ),
                   ),
                 ),
               ],
-             ),
-           ),
+            ),
+          ),
         ],
       ),
     );
