@@ -1,10 +1,37 @@
-
 import 'package:flutter/material.dart';
 import 'package:travel/screens/Home/home_screen.dart';
 import 'package:travel/screens/welcome/welcome_screen.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
+
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  String? _errorMessage; // To store the error message
+
+  void _validateAndLogin() {
+    String email = _emailController.text.trim();
+    String password = _passwordController.text.trim();
+
+    // Check if the email and password are correct
+    if (email == "yeab@gmail.com" && password == "12345678") {
+      // Navigate to HomeScreen
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const HomeScreen()),
+      );
+    } else {
+      // Set the error message
+      setState(() {
+        _errorMessage = "Incorrect email or password.";
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,8 +72,7 @@ class LoginScreen extends StatelessWidget {
               height: double.infinity,
               width: double.infinity,
               child: Column(
-                mainAxisAlignment:
-                    MainAxisAlignment.center, // Ensure spacing between elements
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(left: 20, right: 20),
@@ -54,6 +80,7 @@ class LoginScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         TextField(
+                          controller: _emailController,
                           decoration: InputDecoration(
                             suffixIcon: Icon(Icons.email, color: Colors.grey),
                             label: Text(
@@ -66,6 +93,8 @@ class LoginScreen extends StatelessWidget {
                           ),
                         ),
                         TextField(
+                          controller: _passwordController,
+                          obscureText: true,
                           decoration: InputDecoration(
                             suffixIcon:
                                 Icon(Icons.visibility_off, color: Colors.grey),
@@ -78,6 +107,18 @@ class LoginScreen extends StatelessWidget {
                             ),
                           ),
                         ),
+                        if (_errorMessage !=
+                            null) // Show error message if not null
+                          Padding(
+                            padding: const EdgeInsets.only(top: 8),
+                            child: Text(
+                              _errorMessage!,
+                              style: TextStyle(
+                                color: Colors.red,
+                                fontSize: 14,
+                              ),
+                            ),
+                          ),
                         SizedBox(height: 20),
                         Align(
                           alignment: Alignment.centerRight,
@@ -95,12 +136,7 @@ class LoginScreen extends StatelessWidget {
                         ),
                         SizedBox(height: 70),
                         InkWell(
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => const HomeScreen()));
-                          },
+                          onTap: _validateAndLogin,
                           child: Container(
                             width: 300,
                             height: 55,
