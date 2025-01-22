@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:travel/screens/profilescreen/profile_screen.dart';
 
 import '../../model/place_model.dart';
 import '../detailscreen/detail_screen.dart';
@@ -22,16 +23,31 @@ class _HomeScreenState extends State<HomeScreen> {
           padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 15),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: const [
-              Icon(
+            children: [
+              const Icon(
                 Icons.home,
                 color: Color.fromARGB(255, 76, 185, 3),
                 size: 40,
               ),
-              Icon(
+              const Icon(
                 Icons.favorite,
                 color: Color.fromARGB(255, 76, 185, 3),
                 size: 40,
+              ),
+              IconButton(
+                icon: const Icon(
+                  Icons.person,
+                  color: Color.fromARGB(255, 76, 185, 3),
+                  size: 40,
+                ),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ProfileScreen(),
+                    ),
+                  );
+                },
               ),
             ],
           ),
