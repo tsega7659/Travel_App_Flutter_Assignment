@@ -5,6 +5,7 @@ class PlaceInfo {
       image,
       hotelname,
       price,
+      category,
       hoteladdress;
   final List<String> hotelimage;
   final int distance;
@@ -18,6 +19,7 @@ class PlaceInfo {
     required this.hotelname,
     required this.price,
     required this.hoteladdress,
+    required this.category,
   });
 }
 
@@ -39,6 +41,7 @@ List places = [
     hotelname: "Skylight hotel",
     price: "1000 USD",
     hoteladdress: "150km away",
+    category: "Mountains",
   ),
   PlaceInfo(
     name: "Beach",
@@ -57,6 +60,7 @@ List places = [
     hotelname: "Grand Palace Hotel",
     price: "800USD",
     hoteladdress: "80km away",
+    category: "Beach",
   ),
   PlaceInfo(
     name: "Forest",
@@ -75,6 +79,7 @@ List places = [
     hotelname: "Bon Royal Hotel",
     price: "500USD",
     hoteladdress: "10km away",
+    category: "Forest",
   ),
   PlaceInfo(
     name: "Monuments",
@@ -93,6 +98,7 @@ List places = [
     hotelname: "Sheraton Hotel",
     price: "1200USD",
     hoteladdress: "60km away",
+    category: "Monuments",
   ),
   PlaceInfo(
     name: "Deserts",
@@ -111,5 +117,6 @@ List places = [
     hotelname: "Golden Tulip Hotel",
     price: "1000USD",
     hoteladdress: "100km away",
+    category: "Deserts",
   ),
 ];

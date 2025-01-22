@@ -40,48 +40,56 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
           ),
         ),
       ),
-      body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              Color.fromARGB(255, 135, 201, 92),
-              Color.fromARGB(255, 100, 168, 56),
-              Color.fromARGB(255, 11, 126, 49),
-            ],
-            begin: Alignment.centerLeft,
-            end: Alignment.centerRight,
-          ),
-        ),
-        child: ListView.builder(
-          padding: const EdgeInsets.only(top: 100, right: 10, left: 10),
-          itemCount: widget.favorites.length,
-          itemBuilder: (context, index) {
-            final favorite = widget.favorites[index];
-            return Card(
-              elevation: 5,
-              shadowColor: Colors.green,
-              color: Colors.white,
-              child: ListTile(
-                contentPadding: const EdgeInsets.all(10),
-                leading: CircleAvatar(
-                  radius: 30,
-                  backgroundImage: AssetImage(favorite.imagePath),
-                ),
-                title: Text(
-                  favorite.title,
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                ),
-                trailing: IconButton(
-                  icon: Icon(Icons.delete, color: Colors.red),
-                  onPressed: () {
-                    removeFromFavorites(favorite);
-                  },
+      body: widget.favorites.isEmpty
+          ? Center(
+              child: Text(
+                'Your favorite folder is empty',
+                style: TextStyle(fontSize: 20, color: Colors.grey),
+              ),
+            )
+          : Container(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [
+                    Color.fromARGB(255, 135, 201, 92),
+                    Color.fromARGB(255, 100, 168, 56),
+                    Color.fromARGB(255, 11, 126, 49),
+                  ],
+                  begin: Alignment.centerLeft,
+                  end: Alignment.centerRight,
                 ),
               ),
-            );
-          },
-        ),
-      ),
+              child: ListView.builder(
+                padding: const EdgeInsets.only(top: 100, right: 10, left: 10),
+                itemCount: widget.favorites.length,
+                itemBuilder: (context, index) {
+                  final favorite = widget.favorites[index];
+                  return Card(
+                    elevation: 5,
+                    shadowColor: Colors.green,
+                    color: Colors.white,
+                    child: ListTile(
+                      contentPadding: const EdgeInsets.all(10),
+                      leading: CircleAvatar(
+                        radius: 30,
+                        backgroundImage: AssetImage(favorite.imagePath),
+                      ),
+                      title: Text(
+                        favorite.title,
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
+                      trailing: IconButton(
+                        icon: Icon(Icons.delete, color: Colors.red),
+                        onPressed: () {
+                          removeFromFavorites(favorite);
+                        },
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ),
     );
   }
 }
