@@ -10,3 +10,6 @@ User Profile: Includes a profile page for managing user information.
 Data Management:
 While I initially tried to integrate Firebase, I encountered version compatibility issues. As a workaround, I created model files located in the lib/model directory to serve as a static database. These models, resembling JSON files, store the necessary data, which is accessed by the app's various screens.
 
+![Screen Shots](https://github.com/user-attachments/assets/026cb6d7-70b1-45ea-b36f-78e753ea542b)
+
+
