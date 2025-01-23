@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:travel/screens/Home/widgets/hotels.dart';
 import 'package:travel/screens/favoritescreen/favorite_Screen.dart';
 import 'package:travel/model/favorite_item.dart'; 
+import 'package:travel/model/favorite_item.dart';
 
 
 import '../../model/place_model.dart';
