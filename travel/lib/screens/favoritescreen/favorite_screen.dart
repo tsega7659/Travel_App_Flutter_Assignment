@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:travel/model/favorite_item.dart'; // Import the FavoriteItem class
+import 'package:travel/model/favorite_item.dart';
+import 'package:travel/screens/Home/home_screen.dart';
+import 'package:travel/screens/profilescreen/profile_screen.dart'; // Import the FavoriteItem class
 
 class FavoriteScreen extends StatefulWidget {
   final List<FavoriteItem> favorites;
@@ -20,6 +22,61 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 15),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              IconButton(
+                icon: Icon(
+                  Icons.home,
+                  color: Color.fromARGB(255, 76, 185, 3),
+                  size: 40,
+                ),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => HomeScreen(),
+                    ),
+                  );
+                },
+              ),
+              IconButton(
+                icon: Icon(
+                  Icons.favorite,
+                  size: 40,
+                  color: Color.fromARGB(255, 76, 185, 3),
+                ),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => FavoriteScreen(favorites: []),
+                    ),
+                  );
+                },
+              ),
+              IconButton(
+                icon: const Icon(
+                  Icons.person,
+                  color: Color.fromARGB(255, 76, 185, 3),
+                  size: 40,
+                ),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ProfileScreen(),
+                    ),
+                  );
+                },
+              ),
+            ],
+          ),
+        ),
+      ),
       appBar: AppBar(
         title: Text(
           'Your Favorites',

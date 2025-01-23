@@ -40,7 +40,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 color: Color.fromARGB(255, 76, 185, 3),
                 size: 40,
               ),
-               IconButton(
+              IconButton(
                 icon: Icon(
                   Icons.favorite,
                   size: 40,
@@ -85,10 +85,20 @@ class _HomeScreenState extends State<HomeScreen> {
                     // App bar
                     Row(
                       children: [
-                        const CircleAvatar(
-                          radius: 30,
-                          backgroundImage:
-                              AssetImage("assets/images/profile.jpeg"),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => ProfileScreen(),
+                              ),
+                            );
+                          },
+                          child: const CircleAvatar(
+                            radius: 30,
+                            backgroundImage:
+                                AssetImage("assets/images/profile.jpeg"),
+                          ),
                         ),
                         const SizedBox(
                           width: 15,
@@ -202,6 +212,15 @@ class _HomeScreenState extends State<HomeScreen> {
                         children: [
                           Row(
                             children: [
+                              CategoryCard(
+                                press: () {
+                                  setState(() {
+                                    selectedCategory = "";
+                                  });
+                                },
+                                image: "assets/images/all.jpg",
+                                title: "All",
+                              ),
                               CategoryCard(
                                 press: () {
                                   setState(() {
@@ -331,7 +350,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(15),
                                 image: DecorationImage(
-                                  image: AssetImage(place.image),
+                                  image: AssetImage(place.amzimage),
                                   fit: BoxFit.cover,
                                 ),
                               ),
@@ -349,7 +368,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                             CrossAxisAlignment.start,
                                         children: [
                                           Text(
-                                            place.name,
+                                            place.amzname,
                                             style: const TextStyle(
                                                 fontSize: 20,
                                                 fontWeight: FontWeight.bold,
@@ -357,7 +376,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                           ),
                                           const SizedBox(height: 5),
                                           Text(
-                                            place.location,
+                                            place.amzplace,
                                             style: const TextStyle(
                                                 fontSize: 16,
                                                 color: Colors.white),
@@ -371,6 +390,180 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                           );
                         }).toList(),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 40,
+                    ),
+                    Row(
+                      children: const [
+                        Text(
+                          "Intangible Heritages",
+                          style: TextStyle(
+                              fontSize: 40,
+                              color: Color.fromARGB(255, 39, 79, 12),
+                              fontWeight: FontWeight.w500),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    Container(
+                      height: 300,
+                      child: ListView(
+                        scrollDirection: Axis.horizontal,
+                        children: places.map((place) {
+                          return Padding(
+                            padding: const EdgeInsets.only(left: 5, right: 15),
+                            child: Container(
+                              width: 250,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(15),
+                                image: DecorationImage(
+                                  image: AssetImage(place.intimage),
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                              child: Stack(
+                                children: [
+                                  Positioned(
+                                    bottom: 0,
+                                    left: 10,
+                                    right: 10,
+                                    child: Container(
+                                      padding: const EdgeInsets.only(
+                                          top: 10,
+                                          bottom: 10,
+                                          left: 15,
+                                          right: 15),
+                                      color: Colors.black.withOpacity(0.6),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            place.intname,
+                                            style: const TextStyle(
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.bold,
+                                                color: Colors.white),
+                                          ),
+                                          const SizedBox(height: 5),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          );
+                        }).toList(),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 40,
+                    ),
+                    Text(
+                      "Facts About Ethiopia",
+                      style: TextStyle(
+                          fontSize: 40,
+                          color: Color.fromARGB(255, 39, 79, 12),
+                          fontWeight: FontWeight.w500),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Row(
+                      children: [
+                        Text(
+                          "Ethiopia, in the Horn of Africa, is a rugged, \n landlocked country split by the Great Rift \nValley. With archaeological finds dating back \nmore than 3 million years, it’s a place\n of ancient culture. Among its important \nsites are Lalibela with its rock-cut Christian\n churches from the 12th–13th centuries. \nAksum is the ruins of an ancient city with \nobelisks, tombs, castles and Our Lady \nMary of Zion church.",
+                          style: const TextStyle(
+                            fontSize: 20,
+                            color: Color.fromARGB(255, 134, 196, 94),
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 30,
+                    ),
+                    Divider(
+                      height: 5,
+                      color: Color.fromARGB(255, 100, 168, 56),
+                    ),
+
+                    Container(
+                      width: double.infinity,
+                      padding: EdgeInsets.only(
+                          top: 40, bottom: 40, left: 10, right: 10),
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(colors: [
+                          Color.fromARGB(255, 135, 201, 92),
+                          Color.fromARGB(255, 100, 168, 56),
+                          Color.fromARGB(255, 11, 126, 49),
+                        ]),
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "By: Yeabsira Zelalem\nID: ETS1655/14\nSec:E",
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 20),
+                              ),
+                              const SizedBox(
+                                height: 30,
+                              ),
+                              Row(
+                                children: [
+                                  Icon(
+                                    Icons.email,
+                                    size: 30,
+                                    color: Colors.white,
+                                  ),
+                                  SizedBox(width: 10),
+                                  Text(
+                                    "yeabsirazelalem791@gmail.com",
+                                    style: TextStyle(
+                                        color: Colors.white, fontSize: 20),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              Row(
+                                children: [
+                                  Icon(
+                                    Icons.watch,
+                                    size: 30,
+                                    color: Colors.white,
+                                  ),
+                                  SizedBox(width: 10),
+                                  Text(
+                                    "Date: ${DateTime.now().toLocal().toString().split(' ')[0]}",
+                                    style: TextStyle(
+                                        color: Colors.white, fontSize: 20),
+                                  ),
+                                ],
+                              ),
+                              Text(
+                                "ተጓዥ App",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ],
+                          ),
+                        ],
                       ),
                     ),
                   ],

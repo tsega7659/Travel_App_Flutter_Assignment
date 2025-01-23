@@ -51,6 +51,21 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   );
                 },
               ),
+              IconButton(
+                icon: const Icon(
+                  Icons.person,
+                  color: Color.fromARGB(255, 76, 185, 3),
+                  size: 40,
+                ),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ProfileScreen(),
+                    ),
+                  );
+                },
+              ),
             ],
           ),
         ),
