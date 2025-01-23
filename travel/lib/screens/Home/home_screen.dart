@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:travel/screens/favoritescreen/favorite_screen.dart';
 import 'package:travel/screens/profilescreen/profile_screen.dart';
 
@@ -552,7 +553,14 @@ class _HomeScreenState extends State<HomeScreen> {
                                     style: TextStyle(
                                         color: Colors.white, fontSize: 20),
                                   ),
+                                  SizedBox(width: 10),
                                 ],
+                              ),
+                              SizedBox(width: 20),
+                              Text(
+                                "https://github.com/tsega7659/Travel_App_Flutter_Assignment",
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 20),
                               ),
                               Text(
                                 "ተጓዥ App",
