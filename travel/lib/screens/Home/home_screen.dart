@@ -40,7 +40,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 color: Color.fromARGB(255, 76, 185, 3),
                 size: 40,
               ),
-               IconButton(
+              IconButton(
                 icon: Icon(
                   Icons.favorite,
                   size: 40,
@@ -205,6 +205,15 @@ class _HomeScreenState extends State<HomeScreen> {
                               CategoryCard(
                                 press: () {
                                   setState(() {
+                                    selectedCategory = "";
+                                  });
+                                },
+                                image: "assets/images/all.jpg",
+                                title: "All",
+                              ),
+                              CategoryCard(
+                                press: () {
+                                  setState(() {
                                     selectedCategory = "Mountains";
                                   });
                                 },
@@ -331,7 +340,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(15),
                                 image: DecorationImage(
-                                  image: AssetImage(place.image),
+                                  image: AssetImage(place.amzimage),
                                   fit: BoxFit.cover,
                                 ),
                               ),
@@ -349,7 +358,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                             CrossAxisAlignment.start,
                                         children: [
                                           Text(
-                                            place.name,
+                                            place.amzname,
                                             style: const TextStyle(
                                                 fontSize: 20,
                                                 fontWeight: FontWeight.bold,
@@ -357,7 +366,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                           ),
                                           const SizedBox(height: 5),
                                           Text(
-                                            place.location,
+                                            place.amzplace,
                                             style: const TextStyle(
                                                 fontSize: 16,
                                                 color: Colors.white),
@@ -372,6 +381,100 @@ class _HomeScreenState extends State<HomeScreen> {
                           );
                         }).toList(),
                       ),
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Row(
+                      children: const [
+                        Text(
+                          "Intangible Heritages",
+                          style: TextStyle(
+                              fontSize: 40,
+                              color: Color.fromARGB(255, 39, 79, 12),
+                              fontWeight: FontWeight.w500),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    Container(
+                      height: 300,
+                      child: ListView(
+                        scrollDirection: Axis.horizontal,
+                        children: places.map((place) {
+                          return Padding(
+                            padding: const EdgeInsets.only(left: 5, right: 15),
+                            child: Container(
+                              width: 250,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(15),
+                                image: DecorationImage(
+                                  image: AssetImage(place.intimage),
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                              child: Stack(
+                                children: [
+                                  Positioned(
+                                    bottom: 0,
+                                    left: 10,
+                                    right: 10,
+                                    child: Container(
+                                      padding: const EdgeInsets.only(
+                                          top: 10,
+                                          bottom: 10,
+                                          left: 15,
+                                          right: 15),
+                                      color: Colors.black.withOpacity(0.6),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            place.intname,
+                                            style: const TextStyle(
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.bold,
+                                                color: Colors.white),
+                                          ),
+                                          const SizedBox(height: 5),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          );
+                        }).toList(),
+                      ),
+                    ),
+                    Text(
+                      "Facts About Ethiopia",
+                      style: TextStyle(
+                          fontSize: 40,
+                          color: Color.fromARGB(255, 39, 79, 12),
+                          fontWeight: FontWeight.w500),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Row(
+                      children: [
+                        Text(
+                          "Ethiopia, in the Horn of Africa, is a rugged, \n landlocked country split by the Great Rift \nValley. With archaeological finds dating back \nmore than 3 million years, it’s a place\n of ancient culture. Among its important \nsites are Lalibela with its rock-cut Christian\n churches from the 12th–13th centuries. \nAksum is the ruins of an ancient city with \nobelisks, tombs, castles and Our Lady \nMary of Zion church.",
+                          style: const TextStyle(
+                            fontSize: 20,
+                            color: Color.fromARGB(255, 134, 196, 94),
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 14,
                     ),
                   ],
                 ),
